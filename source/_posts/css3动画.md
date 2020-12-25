@@ -409,3 +409,5 @@ CSS 动画是可以暂停的。属性 animation-play-state 表示动画播放状
 - `alternate-reverse` 表示反向和正向交叉进行。
 
  这个自己动手在浏览器改下样式更容易理解
+
+最后附带一个代码 [css3动画](https://gitee.com/gdoudeng/css3-animation.git)
