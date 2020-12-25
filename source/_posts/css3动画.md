@@ -209,12 +209,9 @@ div {
 
 - 语法
 
-```css
-animation: name duration timing-function delay iteration-count direction fill-mode play-state
+`animation` :   name   duration timing-function delay iteration-count direction   fill-mode        play-state
+`animation` : 动画名称  持续时间        运动曲线    延迟执行    执行次数      方向    动画结束后元素应该在的位置    动画状态    
 
-;
-/* animation: 动画名称  持续时间        运动曲线    延迟执行    执行次数      是否反向   */
-```  
 
 ```css
 div {
@@ -411,3 +408,9 @@ CSS 动画是可以暂停的。属性 animation-play-state 表示动画播放状
  这个自己动手在浏览器改下样式更容易理解
 
 最后附带一个代码 [css3动画](https://gitee.com/gdoudeng/css3-animation.git)
+
+还有几个参考动画[15个CodePen上启发灵感的CSS动画案例](https://webdesign.tutsplus.com/zh-hans/articles/15-inspiring-examples-of-css-animation-on-codepen--cms-23937)
+
+一个动画库[AnimateCss](https://animate.style/)
+
+一个动画可视化编辑工具网址[AnimationKit](https://angrytools.com/css/animation/)
