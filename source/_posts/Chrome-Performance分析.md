@@ -139,6 +139,26 @@ Image Decode | 一个图片资源完成解码后触发
 Image Resize         | 一个图片被修改尺寸后触发
 Paint         | 合并后的层被绘制到对应显示区域后触发
 
+# 跟Summary Tab 同级的几个tab
+
+## Bottom-Up Tab
+
+!['''](https://user-gold-cdn.xitu.io/2018/8/10/16522d5a72ccd1e8?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+在 Timeline 中选取一段时间,然后点击 Bottom-Up得到上图,图片中展示浏览器执行的各个操作说占用的时间
+
+## Call-tree Tab
+
+!['''](https://user-gold-cdn.xitu.io/2018/8/10/16522d60f31f4962?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+同理点击Call Tree 得到上图: 表示浏览器的基本操作(事件执行,绘制...)所占用的时间
+
+## Event log Tab
+
+!['''](https://user-gold-cdn.xitu.io/2018/8/10/16522d5b3b6a26fb?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
+
+同理点击 Event Log得到上图: 可以按照选中时间内事件发生的顺序来查看事件执行所占用的时间.
+
 # 开启FPS meter
 
 还有一个利器，就是FPS meter了，它提供了一种实时的FPS评估。
