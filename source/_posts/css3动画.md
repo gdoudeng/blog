@@ -134,7 +134,7 @@ translate和translateX看起来效果一样
 
 > 拥有修改执行变换的属性，时长，速率和延迟时间的能力
 
-![](http://qiniu.iplus-studio.top/Snipaste_2020-12-25_17-20-10.png)
+![](https://picture-transmission.iplus-studio.top/Snipaste_2020-12-25_17-20-10.png)
 
 ```css
 div {
