@@ -111,7 +111,7 @@ fun_features:
     height_px: 3
     color: "#29d"
     # See: https://github.com/rstacruz/nprogress
-    options: { showSpinner: false, trickleSpeed: 200 }
+    options: { showSpinner: false, trickleSpeed: 100 }
 
 # 主题暗色模式，开启后菜单中会出现切换按钮，用户浏览器会存储切换选项，并且会遵循 prefers-color-scheme 自动切换
 # Theme dark mode. If enable, a switch button will appear on the menu, each of the visitor's browser will store his switch option
@@ -268,6 +268,9 @@ version:
 # 页头
 # Header
 #---------------------------
+
+# 导航栏的相关配置
+# Navigation bar
 navbar:
   # 导航栏左侧的标题，为空则按 hexo config 中 `title` 显示
   # The title on the left side of the navigation bar. If empty, it is based on `title` in hexo config
@@ -297,8 +300,8 @@ navbar:
     - { key: "about", link: "/about/", icon: "iconfont icon-user-fill" }
     #- { key: "links", link: "/links/", icon: "iconfont icon-link-fill" }
 
-# 搜索栏，基于 hexo-generator-search 插件，若已安装其他搜索插件请关闭此功能，以避免生成多余的索引文件
-# Search bar, based on hexo-generator-search. If you have installed other search plugins, please disable this feature to avoid generating redundant index files
+# 搜索功能，基于 hexo-generator-search 插件，若已安装其他搜索插件请关闭此功能，以避免生成多余的索引文件
+# Search feature, based on hexo-generator-search. If you have installed other search plugins, please disable this feature to avoid generating redundant index files
 search:
   enable: true
   # 搜索索引文件的路径，可以是相对路径或外站的绝对路径
@@ -318,6 +321,17 @@ search:
   # If true, search will scan the post content
   content: true
 
+# 首屏图片的相关配置
+# Config of the big image on the first screen
+banner:
+  # 视差滚动，图片与板块会随着屏幕滚动产生视差效果
+  # Scrolling parallax
+  parallax: true
+
+  # 图片最小的宽高比，以免图片两边被过度裁剪，适用于移动端竖屏时，如需关闭设为 0
+  # Minimum ratio of width to height, applicable to the vertical screen of mobile device, if you need to close it, set it to 0
+  width_height_ratio: 1.0
+
 # 向下滚动的箭头
 # Scroll down arrow
 scroll_down_arrow:
@@ -325,7 +339,7 @@ scroll_down_arrow:
 
   # 头图高度不小于指定比例，才显示箭头
   # Only the height of the banner image is greater than the ratio, the arrow is displayed
-  banner_height_limit: 90
+  banner_height_limit: 80
 
   # 翻页后自动滚动
   # Auto scroll after page turning
@@ -335,10 +349,6 @@ scroll_down_arrow:
 # Scroll top arrow
 scroll_top_arrow:
   enable: true
-
-# 头图滚动视差
-# Banner image scrolling parallax
-banner_parallax: true
 
 
 #---------------------------
@@ -578,8 +588,8 @@ post:
     # Options: mathjax | katex
     engine: mathjax
 
-  # 流程图，基于 mermaid-js
-  # Flow chart, based on mermaid-js
+  # 流程图，基于 mermaid-js，具体请见：https://hexo.fluid-dev.com/docs/guide/#mermaid-流程图
+  # Flow chart, based on mermaid-js, see: https://hexo.fluid-dev.com/docs/en/guide/#mermaid
   mermaid:
     # 开启后文章默认可用，自定义页面如需使用，需在 Front-matter 中指定 `mermaid: true`
     # If you want to use mermaid on the custom page, you need to set `mermaid: true` in Front-matter
@@ -853,14 +863,12 @@ links:
 
 
 #---------------------------
-# 以下是配置 JS CSS 静态资源的 URL 前缀，可以自定义成 CDN 地址，
-# 默认的 staticfile CDN 可能在部分地区无法访问，如果需要修改，最好使用与默认配置相同的版本，以避免潜在的问题，
-# 在站点上启用 https 时，请使用 CDN 地址的 https 协议，
+# 以下是配置 JS CSS 等静态资源的 URL 前缀，可以自定义成 CDN 地址，
+# 默认的 jsDelivr CDN 可能在部分地区无法访问，如果需要修改，最好使用与默认配置相同的版本，以避免潜在的问题，
 # ** 如果你不知道如何设置，请不要做任何改动 **
 #
-# Here is the url prefix to configure JS and CSS static assets. Set CDN addresses you want to customize.
+# Here is the url prefix to configure the static assets. Set CDN addresses you want to customize.
 # Be aware that you would better use the same version as default ones to avoid potential problems.
-# Use the https protocol of CDN url when you enable https on your site.
 # DO NOT EDIT THE FOLLOWING SETTINGS UNLESS YOU KNOW WHAT YOU ARE DOING
 #---------------------------
 

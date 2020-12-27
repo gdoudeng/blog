@@ -322,7 +322,7 @@ animation-play-state | 指定动画播放状态，正在运行或暂停。默认
 
 这些值其实都是 `cubic-bezier(n,n,n,n)` 的特例。它们被称为贝塞尔曲线。
 
-一个在线调试贝塞尔曲线的网站：[cubic-bezier.com](cubic-bezier.com)。
+一个在线调试贝塞尔曲线的网站：[cubic-bezier.com](https://cubic-bezier.com/#.17,.67,.83,.67)。
 
 ### animation-fill-mode (重点)
 
@@ -348,15 +348,15 @@ animation-play-state | 指定动画播放状态，正在运行或暂停。默认
 
 设置填充模式为 `forwards` 时，动画最后停留在 200px 处：
 
-![](https://user-gold-cdn.xitu.io/2019/5/16/16ac0310ff7ba99a?imageslim)
+![](https://picture-transmission.iplus-studio.top/16ac0310ff7ba99a.gif)
 
 设置动画延迟 1s 后执行，且填充模式为 `backwards` 时，可以看到动画在开始前是处于 100px 处，动画结束后回到 0px 处：
 
-![](https://user-gold-cdn.xitu.io/2019/5/16/16ac035a53f40b08?imageslim)
+![](https://picture-transmission.iplus-studio.top/16ac035a53f40b08.gif)
 
 最后设置填充模式为 `both` 的情形：
 
-![](https://user-gold-cdn.xitu.io/2019/5/16/16ac0380ae444be8?imageslim)
+![](https://picture-transmission.iplus-studio.top/16ac0380ae444be8.gif)
 
 动画结束后，保持动画最后一帧的状态，这个太有用了.
 
@@ -379,20 +379,20 @@ div{
 }
 ```
 
-![](https://user-gold-cdn.xitu.io/2019/5/16/16ac0435e14da43a?imageslim)
+![](https://picture-transmission.iplus-studio.top/16ac0435e14da43a.gif)
 
 ### animation-delay
 
 不为大家注意的是，延迟可以为负数。负延迟表示动画仿佛开始前就已经运行过了那么长时间。
 拿上述进度条为例子，原动画用了 2s 是从 0% 加载到 100% 的。如果设置延迟为 -1s。这动画会从 50% 加载到 100%。仿佛已经运行了 1s 一样：
 
-![](https://user-gold-cdn.xitu.io/2019/5/16/16ac04adc7f87ab6?imageslim)
+![](https://picture-transmission.iplus-studio.top/16ac04adc7f87ab6.gif)
 
 ### animation-play-state
 
 CSS 动画是可以暂停的。属性 animation-play-state 表示动画播放状态，默认值 `running` 表示播放， `paused` 表示暂停
 
-![](https://user-gold-cdn.xitu.io/2019/5/16/16ac050679097040?imageslim)
+![](https://picture-transmission.iplus-studio.top/16ac050679097040.gif)
 
 ### animation-iteration-count
 
