@@ -3,8 +3,7 @@ title: css3动画
 excerpt: 主要是熟悉掌握3个css属性 transform transition animation
 date: 2020-12-25 16:24:14 
 tags: css3
-categories: Web
-comment: true
+categories: 前端
 ---
 
 # 3个重要属性

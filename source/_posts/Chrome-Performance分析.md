@@ -3,6 +3,7 @@ title: Chrome Performance分析
 excerpt: 使用DevTools中的Performance来进行性能分析 
 date: 2020-12-26 16:26:11 
 tags: 性能优化
+categories: 前端
 ---
 
 # 介绍
