@@ -2,7 +2,8 @@
 title: Mac OSX安装MongoDB
 excerpt: 直接看官网就差不多了
 date: 2020-12-29 21:12:51
-tags: 
+tags: MongoDB
+categories: 后台
 ---
 
 
