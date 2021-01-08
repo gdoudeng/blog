@@ -6,6 +6,41 @@ tags: css3
 categories: 前端
 ---
 
+# 20210108更新
+
+## 怎么监听css3动画结束后的事件
+
+在执行完一段css3动画后需要进行一些业务操作或者页面操作等等，咋搞呢？
+
+我们可以使用js来监听两个事件
+
+- 动画播放过程会触发两类事件：
+1. `AnimationEvent`
+2. `TransitionEvent`
+
+- 动画结束的事件的两个实现分别是：
+1. `animationend`
+2. `transitionend`
+
+Demo页面在这里，只测试过Chrome
+
+[https://codepen.io/longtian/pen/jEyrzN](https://codepen.io/longtian/pen/jEyrzN)
+
+兼容性大坑可以看AngularUI的这部分源码
+
+[https://github.com/angular-ui/bootstrap/blob/7512b93fecb6f27df4f5aeba4c756c0c36aebbf2/src/transition/transition.js#L59](https://github.com/angular-ui/bootstrap/blob/7512b93fecb6f27df4f5aeba4c756c0c36aebbf2/src/transition/transition.js#L59)
+
+比如监听一个动画结束
+
+```js
+<div id="animend" class="floating">animationend</div>
+
+document.getElementById("animend").addEventListener("webkitAnimationEnd", e => {
+  // todo ...
+  
+    }, false);
+```
+
 # 3个重要属性
 
 ## transform 变形
