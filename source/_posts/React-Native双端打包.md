@@ -116,3 +116,111 @@ react-native bundle --platform ios --entry-file index.js --bundle-output ./bundl
 `RN` 应用和纯`iOS`应用打包唯一不同的是上面两步，按照这个教程执行完第二步，剩下的步骤就和`iOS`正常`APP`打包一样了
 
 ![](https://picture-transmission.iplus-studio.top/Snipaste_2021-01-10_19-50-48.png)
+
+# 安卓友盟统计+多渠道打包
+
+> 参考：https://blog.csdn.net/k571039838k/article/details/82625295
+> 搬运：https://juejin.cn/post/6844904013171785741
+
+友盟集成配置自己看文档，集成的问题应该都不大，毕竟当时没有任何移动端开发经验的我都集成成功了
+
+要多渠道打包主要是修改几个文件
+
+## `android/app/build.gradle`
+
+```gradle
+android {
+    defaultConfig {
+        ...
+        +++
+        manifestPlaceholders=[UMENG_CHANNEL_VALUE: "Umeng"]
+        flavorDimensions "versionCode"
+    }
+    ...
+    // 配置多渠道包支持
+    productFlavors{
+      Tencent {//投放应用宝市场
+              }
+      Baidu {//投放百度市场
+      }
+      Wandoujia {//投放豌豆荚市场
+      }
+      Vivo {//投放vivo市场
+      }
+      Oppo {//投放oppo市场
+      }
+      Xiaomi {//投放小米市场
+      }
+      Meizu {//投放魅族市场
+      }
+      Huawei {//投放华为应用市场
+      }
+      Lenovo {//投放联想市场
+      }
+      Letv {//投放乐视市场
+      }
+      Gionee {//投放金立市场
+      }
+      HiMarket {//投放安卓市场
+      }
+    }
+    productFlavors.all { flavor ->
+        flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]
+    }
+ 
+}
+
+```
+
+## `android/app/src/main/AndroidManifest.xml`
+
+```xml
+<application> 
+    ...
+    +++
+    <!--友盟-->
+    <meta-data android:value="友盟的appkey" android:name="UMENG_APPKEY"/>
+    <meta-data android:name="UMENG_CHANNEL" android:value="${UMENG_CHANNEL_VALUE}" />
+</application>
+```
+
+其他地方我就当你已经自己完美集成了友盟，因为其他地方跟普通集成友盟没有任何不同，不同的只有上面的地方。
+
+## 添加友盟多渠道后使用`react-native run-android` 报错
+
+```bash
+react-native run-android --variant channelNameDebug
+
+//channelName是渠道的名字，例如Oppo的是
+react-native run-android --variant OppoDebug 
+
+//百度的是
+react-native run-android --variant BaiduDebug 
+```
+
+我一般直接写在 `package.json` 文件
+ 
+```json
+{
+"scripts": {
+    "android": "react-native run-android --variant OppoDebug",
+    "ios": "react-native run-ios",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "bundle-ios": "react-native bundle --platform ios --entry-file index.js --bundle-output ./bundles/main.jsbundle --assets-dest  ./bundles --dev false"
+  }
+}
+```
+
+然后跟以前一样`yarn android`
+
+现在正常运行安卓打包命令，已经可以进行多渠道打包了
+
+![](https://picture-transmission.iplus-studio.top/Snipaste_2021-01-15_18-11-14.png)
+
+输出的文件名是我自定义的，跟多渠道打包无关哈～
+
+测试两个渠道，正常！
+
+![](https://picture-transmission.iplus-studio.top/Snipaste_2021-01-15_18-12-32.png)
