@@ -1,7 +1,8 @@
 ---
-title: RN版百度语音识别与一个UI组件 Dialog和Toast
+title: RN版百度语音识别与一个UI组件
 date: 2021-03-06 18:03:49
 tags: 前端
+excerpt: RN版百度语音识别与一个UI组件 Dialog 和 Toast
 ---
 
 # 预告
@@ -20,7 +21,7 @@ tags: 前端
 
 预告图
 
-![](https://picture-transmission.iplus-studio.top/WechatIMG191.jpeg)
+![](zhttps://picture-transmission.iplus-studio.top/WechatIMG191.jpeghttps://picture-transmission.iplus-studio.top/Snipaste_2021-03-06_18-19-04.png)
 
 ```typescript
 export interface DialogOptions {
