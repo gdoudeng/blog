@@ -50,7 +50,8 @@ $ ./gradlew bundleRelease
 
 ## 1. 导出 `js bundle` 包和图片资源
 
-和打包 `React Native Android` 应用不同的是，我们无法通过命令一步进行导出 `React Native iOS` 应用。我们需要将`JS`部分的代码和图片资源等打包导出，然后通过`XCode`将其添加到`iOS`项目中。
+和打包 `React Native Android` 应用不同的是，我们无法通过命令一步进行导出 `React Native iOS` 应用。我们需要将`JS`部分的代码和图片资源等打包导出，然后通过`XCode`将其添加到`iOS`
+项目中。
 
 - 导出`js bundle`的命令
 
@@ -62,7 +63,7 @@ react-native bundle --platform ios --entry-file index.js --bundle-output ./bundl
 
 ```json
 {
-"scripts": {
+  "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
@@ -175,12 +176,13 @@ android {
 ## `android/app/src/main/AndroidManifest.xml`
 
 ```xml
-<application> 
+
+<application>
     ...
     +++
     <!--友盟-->
     <meta-data android:value="友盟的appkey" android:name="UMENG_APPKEY"/>
-    <meta-data android:name="UMENG_CHANNEL" android:value="${UMENG_CHANNEL_VALUE}" />
+    <meta-data android:name="UMENG_CHANNEL" android:value="${UMENG_CHANNEL_VALUE}"/>
 </application>
 ```
 
@@ -199,10 +201,10 @@ react-native run-android --variant BaiduDebug
 ```
 
 我一般直接写在 `package.json` 文件
- 
+
 ```json
 {
-"scripts": {
+  "scripts": {
     "android": "react-native run-android --variant OppoDebug",
     "ios": "react-native run-ios",
     "start": "react-native start",
@@ -260,9 +262,10 @@ react-native run-android --variant BaiduDebug
 首先我们清楚看到有个`UMENG_CHANNEL` 在，这个明显就是友盟统计啊大哥，360加固会自动在`AndroidManifest.xml`上加上这么一段代码
 
 ```xml
-     <meta-data
-            android:name="UMENG_CHANNEL"
-            android:value="qihu360" />
+
+<meta-data
+        android:name="UMENG_CHANNEL"
+        android:value="qihu360"/>
 ```
 
 很熟悉，这就是友盟统计的渠道。
@@ -277,3 +280,49 @@ react-native run-android --variant BaiduDebug
 
 接下来我测试一下。
 
+![](https://picture-transmission.iplus-studio.top/Snipaste_2021-03-18_18-32-02.png)
+
+装一个应用宝的看下。
+
+我等了一个小时没看到统计结果，需要改一下。
+
+```java
+/**
+     * 获取渠道名
+     *
+     * @param ctx 此处习惯性的设置为activity，实际上context就可以
+     * @return 如果没有获取成功，那么返回值为空
+     */
+    public static String getUMChannelName(Context ctx) {
+        if (ctx == null) {
+            return null;
+        }
+        String channelName = null;
+        try {
+            PackageManager packageManager = ctx.getPackageManager();
+            if (packageManager != null) {
+                //注意此处为ApplicationInfo 而不是 ActivityInfo,因为友盟设置的meta-data是在application标签中，而不是某activity标签中，所以用ApplicationInfo
+                ApplicationInfo applicationInfo = packageManager.getApplicationInfo(ctx.getPackageName(), PackageManager.GET_META_DATA);
+                if (applicationInfo != null) {
+                    if (applicationInfo.metaData != null) {
+                        channelName = applicationInfo.metaData.getString("UMENG_CHANNEL");
+                    }
+                }
+            }
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+        return channelName;
+    }
+
+```
+
+然后初始化的时候也要改。
+
+```java
+RNUMConfigure.init(this, "这是填你自己的app key", AppUtils.getUMChannelName(this), UMConfigure.DEVICE_TYPE_PHONE, null);
+```
+
+然后再来一波。
+
+还是没看到，我直接写死也没看到有数据。gg
