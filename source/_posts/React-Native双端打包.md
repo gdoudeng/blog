@@ -326,3 +326,9 @@ RNUMConfigure.init(this, "这是填你自己的app key", AppUtils.getUMChannelNa
 然后再来一波。
 
 还是没看到，我直接写死也没看到有数据。gg
+
+经过一番谷歌，我发现是他只会统计一台设备第一次安装时候的渠道，所以后面无论我怎么装都是没用的，
+
+我只好找了一台新设备，我后面装了360的，终于看到结果了。
+
+![](https://picture-transmission.iplus-studio.top/Snipaste_2021-03-18_22-00-23.png)
