@@ -224,3 +224,56 @@ react-native run-android --variant BaiduDebug
 测试两个渠道，正常！
 
 ![](https://picture-transmission.iplus-studio.top/Snipaste_2021-01-15_18-12-32.png)
+
+# 360多渠道加固打包
+
+之前只想到多渠道打包，没想到加固，等下想回来的时候，我不可能把打包好的十几个apk一个一个再拿去加固吧？
+
+不用代码，直接用360加固客户端，点几下搞定，速度还行。
+
+先看图。
+
+![](https://picture-transmission.iplus-studio.top/Snipaste_2021-03-18_17-45-58.png)
+
+已经把渠道都打包好，而且还加固了，还签名了！
+
+## 操作
+
+先设置好你的渠道，我举个例子。
+
+![](https://picture-transmission.iplus-studio.top/Snipaste_2021-03-18_17-52-20.png)
+
+点击导入后，他会自动跳转到多渠道模板的，一个txt双击导入。
+
+![](https://picture-transmission.iplus-studio.top/Snipaste_2021-03-18_17-55-04.png)
+
+要修改也可以直接在模版上修改，更加的效率。
+
+![](https://picture-transmission.iplus-studio.top/Snipaste_2021-03-18_17-53-37.png)
+
+图中两个地方一定要勾选，不然就是白搞。
+
+接下来就直接上传打包好的apk，等待就行，他会自动给你分渠道和加固。那么360加固究竟干了啥子东西？
+
+## 他做了啥
+
+首先我们清楚看到有个`UMENG_CHANNEL` 在，这个明显就是友盟统计啊大哥，360加固会自动在`AndroidManifest.xml`上加上这么一段代码
+
+```xml
+     <meta-data
+            android:name="UMENG_CHANNEL"
+            android:value="qihu360" />
+```
+
+很熟悉，这就是友盟统计的渠道。
+
+此处注意，360是会在最后加上这么一段代码，不会覆盖的，所以之前有自己写`UMENG_CHANNEL`的，记得去掉。
+
+我们用as打开一个apk看下究竟是不是这样。
+
+![](https://picture-transmission.iplus-studio.top/Snipaste_2021-03-18_18-01-20.png)
+
+事实上是的。
+
+接下来我测试一下。
+

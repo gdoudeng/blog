@@ -21,7 +21,7 @@ excerpt: RN版百度语音识别与一个UI组件 Dialog 和 Toast
 
 预告图
 
-![](zhttps://picture-transmission.iplus-studio.top/WechatIMG191.jpeghttps://picture-transmission.iplus-studio.top/Snipaste_2021-03-06_18-19-04.png)
+![](https://picture-transmission.iplus-studio.top/Snipaste_2021-03-06_18-19-04.png)
 
 ```typescript
 export interface DialogOptions {
