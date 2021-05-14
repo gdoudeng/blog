@@ -67,3 +67,9 @@ Tips.showDialog(TipsType.confirm, {
 # 开源
 
 项目结束后会开源这两个库，可以关注我 [github](https://github.com/gdoudeng) 和 [gitee](https://gitee.com/gdoudeng) ，我也会在这里说。
+
+百度语音已经开源了，另外一个UI库看时间安排上。
+
+# `react-native-baidu-asr`
+
+[react-native-baidu-asr](https://github.com/gdoudeng/react-native-baidu-asr) 是一个 React Native 下的百度语音库，可以进行语音识别以及语音唤醒。
